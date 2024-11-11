@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  compatly:
+    image: compatly:latest
+    ports:
+      - "3003:3003"
+    environment:
+      MYSQL_DATABASE: wellbeingCompatibility   # Points to a different database in the shared MySQL instance
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: kirk824
+      MYSQL_HOST: jatDatabase  # Uses the external MySQL container from jobdlink
+      PORT: 3003
+      NODE_ENV: production
+    networks:
+      - sharedDatabase
+
+networks:
+  sharedDatabase:
+    external: true   # Reference to the external network

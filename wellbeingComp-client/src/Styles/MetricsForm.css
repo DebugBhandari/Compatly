@@ -1,0 +1,67 @@
+.metrics_component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  padding: 0;
+  background-color: #f5f5f5;
+  width: 100%;
+  min-height: 600px;
+  box-shadow: inset 0px -11px 8px -10px rgba(0, 0, 0, 0.1);
+  color: black;
+  margin-top: 120px;
+}
+.metrics_comp_form {
+  margin-bottom: 100px;
+}
+.metricsDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  min-width: 900px;
+  max-width: 1280px;
+}
+
+.metrics_input {
+  width: 100px;
+  height: 20px;
+  background-color: #f5f5f5;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.metricsSubDiv {
+  width: 400px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  color: black;
+}
+
+.mentalHealthDiv {
+  background-color: red;
+}
+.physicalWellnessDiv {
+  background-color: blue;
+}
+.worklifeBalanceDiv {
+  background-color: green;
+}
+.culturesValuesDiv {
+  background-color: yellow;
+}
+.developmentDiv {
+  background-color: purple;
+}
+.uniqueWellnessDiv {
+  background-color: orange;
+}
