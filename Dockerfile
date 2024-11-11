@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3003
 
 # Start the application
-CMD ["nodemon", "server.js"]  # Adjust the entry point file as necessary
+CMD ["node", "server.js"]  # Adjust the entry point file as necessary
