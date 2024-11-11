@@ -39,7 +39,7 @@ export default function Navbar() {
           <button className="signin_button" onClick={()=> window.location.href = "/profile"}>Profile</button>
         </div>
         <div className="navDropDownCardBottom">
-          {!activeUserMetrics[0]?.id?<button className="signin_button" onClick={()=> window.location.href = "/metricsForm"}>Metrics</button>:
+          {!activeUserMetrics?.id?<button className="signin_button" onClick={()=> window.location.href = "/metricsForm"}>Metrics</button>:
           <button className="signin_button" onClick={()=> window.location.href = "/editMetricsForm"}>Metrics</button>}
           
           <button className="companyButton" onClick={handleLogout}>Logout</button></div></div>

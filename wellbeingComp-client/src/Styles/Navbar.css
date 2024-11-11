@@ -164,6 +164,47 @@
 .companyButton:hover {
   background-color: #f0a8a8;
 }
+
+/*(((((((((((((((((((((//////////////////////////////////////////////Footer))))))))))))))))*/
+
+.footDiv {
+  height: 100px;
+  background-color: white;
+  width: 100dvw;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.footTitle {
+  width: 1400px;
+  flex-direction: row;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footTitleDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  color: black;
+  padding: 0;
+}
+.footRightSideText a {
+  color: black;
+  text-decoration: none;
+}
+.footTitleDiv h6 {
+  margin: 0;
+  padding: 0;
+}
+
 @media screen and (max-width: 768px) {
   .navbar_logo_title h6 {
     display: none;
@@ -173,7 +214,7 @@
   }
 
   .navbar_menu {
-    min-width: 160px;
+    min-width: 120px;
   }
   .navbar_logo_title {
     width: 100px;

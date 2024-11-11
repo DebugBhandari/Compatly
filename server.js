@@ -41,14 +41,33 @@ const intializeDB = async () => {
       "CREATE DATABASE IF NOT EXISTS wellbeingCompatibility"
     );
     await connection.query(
-      "Create table if not exists users (id int primary key auto_increment, fullname varchar(255), email varchar(255), UNIQUE(email), password varchar(255) ,created_at timestamp default current_timestamp, isCompany boolean default false)"
+      `Create table if not exists users (id int primary key auto_increment, 
+      fullname varchar(255), email varchar(255), UNIQUE(email), password 
+      varchar(255) ,created_at timestamp default current_timestamp, 
+      isCompany boolean default false)`
     );
 
     await connection.query(
-      "Create table if not exists metrics (id int primary key auto_increment, user_id INT NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id),UNIQUE(user_id) , isCompany boolean, mentalHealthDays ENUM('1','2','3','4','5') NOT NULL, therapyAccess ENUM('1','2','3','4','5') NOT NULL, digitalDetoxDays ENUM('1','2','3','4','5') NOT NULL, gymAccess ENUM('1','2','3','4','5') NOT NULL, wellnessStipend ENUM('1','2','3','4','5') NOT NULL, flexibleHours ENUM('1','2','3','4','5') NOT NULL, workFromHome ENUM('1','2','3','4','5') NOT NULL, unlimitedPto ENUM('1','2','3','4','5') NOT NULL, inclusivity ENUM('1','2','3','4','5') NOT NULL, ecoConciousValues ENUM('1','2','3','4','5') NOT NULL, careerPathClarity ENUM('1','2','3','4','5') NOT NULL, groupBreathworkSessions ENUM('1','2','3','4','5') NOT NULL, created_at timestamp default current_timestamp)"
+      `Create table if not exists metrics (id int primary key auto_increment, 
+      user_id INT NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id),
+      UNIQUE(user_id) , isCompany boolean, mentalHealthDays ENUM('1','2','3','4','5') 
+      NOT NULL, therapyAccess ENUM('1','2','3','4','5') NOT NULL, digitalDetoxDays 
+      ENUM('1','2','3','4','5') NOT NULL, gymAccess ENUM('1','2','3','4','5') 
+      NOT NULL, wellnessStipend ENUM('1','2','3','4','5') NOT NULL, flexibleHours 
+      ENUM('1','2','3','4','5') NOT NULL, workFromHome ENUM('1','2','3','4','5') 
+      NOT NULL, unlimitedPto ENUM('1','2','3','4','5') NOT NULL, inclusivity 
+      ENUM('1','2','3','4','5') NOT NULL, ecoConciousValues ENUM('1','2','3','4','5') 
+      NOT NULL, careerPathClarity ENUM('1','2','3','4','5') NOT NULL, 
+      groupBreathworkSessions ENUM('1','2','3','4','5') NOT NULL, created_at 
+      timestamp default current_timestamp)`
     );
     await connection.query(
-      "CREATE TABLE if not exists swipes (id INT PRIMARY KEY AUTO_INCREMENT, swiper_id INT NOT NULL, swipee_id INT NOT NULL, leftswipe BOOLEAN, compatibility_percentage INT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (swiper_id) REFERENCES users(id), FOREIGN KEY (swipee_id) REFERENCES metrics(id), UNIQUE(swiper_id, swipee_id));"
+      `CREATE TABLE if not exists swipes 
+      (id INT PRIMARY KEY AUTO_INCREMENT, swiper_id INT NOT NULL, 
+      swipee_id INT NOT NULL, leftswipe BOOLEAN, compatibility_percentage INT, 
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (swiper_id) 
+      REFERENCES users(id), FOREIGN KEY (swipee_id) REFERENCES metrics(user_id), 
+      UNIQUE(swiper_id, swipee_id));`
     );
     await connection.end();
     console.log("Database initialized");

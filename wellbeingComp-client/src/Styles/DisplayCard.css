@@ -53,10 +53,19 @@
   height: 30%;
   width: 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #2a2e45ed;
   color: white;
   border-radius: 8px 8px 0 0;
 }
+.cardHeader h1,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
 .cardLine {
   height: 20px;
   width: 100%;
@@ -68,13 +77,22 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 
 .cardItem {
-  height: 100px;
+  height: 40px;
   width: 200px;
-  background-color: blue;
-  color: white;
+  color: rgb(5, 1, 249);
+}
+
+@media screen and (max-width: 768px) {
+  .displaycard {
+    width: 80%;
+  }
+  .navDropDownContent {
+    left: -120px;
+  }
 }

@@ -14,7 +14,11 @@ const useZuStore = create(
       setRandomCard: (card) => set(() => ({ randomCard: card })),
       clearRandomCard: () => set(() => ({ randomCard: {} })),
       swipes: [],
-      setSwipes: (swipes) => set(() => ({ swipes: swipes }))
+      setSwipes: (swipes) => set(() => ({ swipes: swipes })),
+      deleteASwipe: (id) =>
+        set((state) => ({
+          swipes: state.swipes.filter((swipe) => swipe.id !== id)
+        }))
     }),
     {
       name: "junctionwellbeing", // name of the item in the storage (must be unique)

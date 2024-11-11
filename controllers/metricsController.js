@@ -1,6 +1,7 @@
 import pkg from "express";
 const { req, res, next } = pkg;
 import MetricsService from "../services/MetricsService.js";
+import calculateEuclidianDistance from "./compatibilityCalculator.js";
 
 //Create Metrics
 export const createMetrics = async (req, res, next) => {
@@ -132,7 +133,13 @@ export const getRandomMetrics = async (req, res, next) => {
     const user_id = parseInt(req.params.user_id, 10); // Convert to integer
     const isCompany = req.params.isCompany == "0" ? 0 : 1;
     const metric = await MetricsService.getRandomMetrics(user_id, isCompany);
-    res.json(metric);
+    //also get user metrics to calculate compatibility percentage
+    const userMetric = await MetricsService.getCurrentUserMetrics(user_id);
+    const compatibility_percentage = calculateEuclidianDistance(
+      userMetric,
+      metric
+    );
+    res.json({ ...metric, compatibility_percentage });
   } catch (error) {
     if (error.name === "ValidationError") {
       next(console.log("Invalid Request", error));
@@ -192,6 +199,22 @@ export const getSwipeHistory = async (req, res, next) => {
     const { user_id } = req.params;
     const swipeHistory = await MetricsService.getSwipeHistory(user_id);
     res.json(swipeHistory);
+  } catch (error) {
+    if (error.name === "ValidationError") {
+      next(console.log("Invalid Request", error));
+    } else {
+      next(console.log("Internal Server Error", error));
+    }
+  }
+};
+
+//Delete Swipe
+export const deleteSwipe = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    await MetricsService.deleteSwipe(id);
+    res.json({ message: "Swipe Deleted" });
   } catch (error) {
     if (error.name === "ValidationError") {
       next(console.log("Invalid Request", error));

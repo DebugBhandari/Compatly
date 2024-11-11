@@ -105,7 +105,7 @@ const MetricsForm = () => {
 
       <form onSubmit={handleSubmit} className="metrics_comp_form">
         <div className="metricsDiv">
-          <div className="metricsSubDiv mentalHealthDiv">
+          <div className="metricsSubDiv mentalWBDiv">
             <label>Mental Health Days:</label>
             <select
               className="metrics_input"
@@ -144,7 +144,7 @@ const MetricsForm = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <div className="metricsSubDiv physicalWellnessDiv">
+          <div className="metricsSubDiv fitnessDiv">
             <label>Gym Access:</label>
             <select
               className="metrics_input"
@@ -169,8 +169,20 @@ const MetricsForm = () => {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
+            <label>Group Breathwork Sessions:</label>
+            <select
+              className="metrics_input"
+              value={groupBreathworkSessions}
+              onChange={handleGroupBreathworkSessions}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           </div>
-          <div className="metricsSubDiv worklifeBalanceDiv">
+          <div className="metricsSubDiv flexibilityDiv">
             <label>Flexible Hours:</label>
             <select
               className="metrics_input"
@@ -195,20 +207,9 @@ const MetricsForm = () => {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <label>Unlimited PTO:</label>
-            <select
-              className="metrics_input"
-              value={unlimitedPto}
-              onChange={handleUnlimitedPto}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+           
           </div>
-          <div className="metricsSubDiv culturesValuesDiv">
+          <div className="metricsSubDiv diversityDiv">
             <label>Inclusivity:</label>
             <select
               className="metrics_input"
@@ -234,7 +235,7 @@ const MetricsForm = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <div className="metricsSubDiv developmentDiv">
+          <div className="metricsSubDiv growthDiv">
             <label>Career Path Clarity:</label>
             <select
               className="metrics_input"
@@ -247,13 +248,11 @@ const MetricsForm = () => {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-          </div>
-          <div className="metricsSubDiv uniqueWellnessDiv">
-            <label>Group Breathwork Sessions:</label>
+            <label>Unlimited PTO:</label>
             <select
               className="metrics_input"
-              value={groupBreathworkSessions}
-              onChange={handleGroupBreathworkSessions}
+              value={unlimitedPto}
+              onChange={handleUnlimitedPto}
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -262,6 +261,7 @@ const MetricsForm = () => {
               <option value="5">5</option>
             </select>
           </div>
+         
         </div>
 
         <button type="submit" className="signin_button">

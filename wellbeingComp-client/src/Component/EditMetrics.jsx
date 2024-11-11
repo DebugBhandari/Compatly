@@ -5,7 +5,7 @@ import { axiosInstance } from "../Services/config";
 import useZuStore from "../zuStore";
 
 const EditMetrics = () => {
-const activeUserMetrics = useZuStore((state) => state.activeUserMetrics[0]);
+const activeUserMetrics = useZuStore((state) => state.activeUserMetrics);
   const [mentalHealthDays, setMentalHealthDays] = useState(activeUserMetrics.mentalHealthDays);
   const [therapyAccess, setTherapyAccess] = useState(activeUserMetrics.therapyAccess);
   const [ digitalDetoxDays, setDigitalDetoxDays] = useState(activeUserMetrics.digitalDetoxDays);
@@ -21,7 +21,7 @@ const activeUserMetrics = useZuStore((state) => state.activeUserMetrics[0]);
 
 
 
-  const setRandomCard = useZuStore((state) => state.setRandomCard);
+  const setActiveUserMetrics = useZuStore((state) => state.setActiveUserMetrics);
 
  const handleMentalHealthDays = (e) => {
     setMentalHealthDays(e.target.value);
@@ -85,7 +85,7 @@ const handleWellnessStipend = (e) => {
         groupBreathworkSessions })
       .then((response) => {
         console.log("Uploaded Metrices", response.data);
-        setRandomCard(response.data);
+        setActiveUserMetrics(response.data);
         alert("Updated Metrices");
         window.location.href = "/";
       })
@@ -97,128 +97,168 @@ const handleWellnessStipend = (e) => {
 
   return (
     <div className="metrics_component">
-      <h2>Fill in your Metrices</h2>
+      <h2>Edit your Metrices</h2>
  
       <form onSubmit={handleSubmit} className="metrics_comp_form">
-        <div className="metricsDiv">
-        <div className="metricsSubDiv mentalHealthDiv">
-        <label>Mental Health Days:</label>
-        <select className="metrics_input" value={mentalHealthDays} onChange={handleMentalHealthDays}>
-         
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-       
-        <label>Therapy Access:</label>
-        <select className="metrics_input" value={therapyAccess} onChange={handleTherapyAccess}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label>Digital Detox Days:</label>
-        <select className="metrics_input" value={digitalDetoxDays} onChange={handleDigitalDetoxDays}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select></div>
-        <div className="metricsSubDiv physicalWellnessDiv">
-        <label>Gym Access:</label>
-        <select className="metrics_input" value={gymAccess} onChange={handleGymAccess}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label>Wellness Stipend:</label>
-        <select className="metrics_input" value={wellnessStipend} onChange={handleWellnessStipend}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        </div>
-        <div className="metricsSubDiv worklifeBalanceDiv">
-        <label>Flexible Hours:</label>
-        <select className="metrics_input" value={flexibleHours} onChange={handleFlexibleHours}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label>Work From Home:</label>
-        <select className="metrics_input" value={workFromHome} onChange={handleWorkFromHome}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label>Unlimited PTO:</label>
-        <select className="metrics_input" value={unlimitedPto} onChange={handleUnlimitedPto}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select></div>
-        <div className="metricsSubDiv culturesValuesDiv">
-        <label>Inclusivity:</label>
-        <select className="metrics_input" value={inclusivity} onChange={handleInclusivity}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label>Eco-Concious Values:</label>
-        <select className="metrics_input" value={ecoConciousValues} onChange={handleEcoConciousValues}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select></div>
-        <div className="metricsSubDiv developmentDiv">
-        <label>Career Path Clarity:</label>
-        <select className="metrics_input" value={careerPathClarity} onChange={handleCareerPathClarity}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select></div>
-        <div className="metricsSubDiv uniqueWellnessDiv">
-        <label>Group Breathwork Sessions:</label>
-        <select className="metrics_input" value={groupBreathworkSessions} onChange={handleGroupBreathworkSessions}>
-          
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select></div>
-        </div>
+      <div className="metricsDiv">
+          <div className="metricsSubDiv mentalWBDiv">
+            <label>Mental Health Days:</label>
+            <select
+              className="metrics_input"
+              value={mentalHealthDays}
+              onChange={handleMentalHealthDays}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
 
+            <label>Therapy Access:</label>
+            <select
+              className="metrics_input"
+              value={therapyAccess}
+              onChange={handleTherapyAccess}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label>Digital Detox Days:</label>
+            <select
+              className="metrics_input"
+              value={digitalDetoxDays}
+              onChange={handleDigitalDetoxDays}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div className="metricsSubDiv fitnessDiv">
+            <label>Gym Access:</label>
+            <select
+              className="metrics_input"
+              value={gymAccess}
+              onChange={handleGymAccess}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label>Wellness Stipend:</label>
+            <select
+              className="metrics_input"
+              value={wellnessStipend}
+              onChange={handleWellnessStipend}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label>Group Breathwork Sessions:</label>
+            <select
+              className="metrics_input"
+              value={groupBreathworkSessions}
+              onChange={handleGroupBreathworkSessions}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div className="metricsSubDiv flexibilityDiv">
+            <label>Flexible Hours:</label>
+            <select
+              className="metrics_input"
+              value={flexibleHours}
+              onChange={handleFlexibleHours}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label>Work From Home:</label>
+            <select
+              className="metrics_input"
+              value={workFromHome}
+              onChange={handleWorkFromHome}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+           
+          </div>
+          <div className="metricsSubDiv diversityDiv">
+            <label>Inclusivity:</label>
+            <select
+              className="metrics_input"
+              value={inclusivity}
+              onChange={handleInclusivity}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label>Eco-Concious Values:</label>
+            <select
+              className="metrics_input"
+              value={ecoConciousValues}
+              onChange={handleEcoConciousValues}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div className="metricsSubDiv growthDiv">
+            <label>Career Path Clarity:</label>
+            <select
+              className="metrics_input"
+              value={careerPathClarity}
+              onChange={handleCareerPathClarity}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label>Unlimited PTO:</label>
+            <select
+              className="metrics_input"
+              value={unlimitedPto}
+              onChange={handleUnlimitedPto}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+         
+        </div>
         <button type="submit" className="signin_button">
           Update
         </button>

@@ -7,6 +7,7 @@ import Register from './Component/Register';
 import MetricsForm from './Component/MetricsForm';
 import EditMetrics from './Component/EditMetrics';
 import Profile from './Component/Profile';
+import Footer from './Component/Footer';
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
       <Route path="/profile" element={<Profile/>}/>
             </Routes>
      </BrowserRouter>
+     <Footer/>
     </div>
   )
 }

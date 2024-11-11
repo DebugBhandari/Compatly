@@ -6,7 +6,8 @@ import {
   getCurrentUserMetrics,
   createSwipe,
   updateMetrics,
-  getSwipeHistory
+  getSwipeHistory,
+  deleteSwipe
 } from "../controllers/metricsController.js";
 
 const router = express.Router();
@@ -20,5 +21,6 @@ router.put("/update/:metric_id", updateMetrics);
 router.get("/current/:user_id", getCurrentUserMetrics);
 router.post("/swipe/:swiper_id/:swipee_id", createSwipe);
 router.get("/swipehistory/:user_id", getSwipeHistory);
+router.delete("/swipe/delete/:id", deleteSwipe);
 
 export default router;
