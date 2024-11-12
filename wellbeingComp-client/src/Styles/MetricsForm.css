@@ -52,19 +52,19 @@
 }
 
 .mentalWBDiv {
-  background-color: red;
+  background-color: rgb(255, 181, 181);
 }
 .fitnessDiv {
-  background-color: orange;
+  background-color: rgb(235, 200, 135);
 }
 .flexibilityDiv {
-  background-color: rgb(62, 159, 62);
+  background-color: rgb(159, 243, 159);
 }
 .diversityDiv {
-  background-color: yellow;
+  background-color: rgb(240, 240, 177);
 }
 .growthDiv {
-  background-color: rgb(230, 92, 230);
+  background-color: rgb(228, 160, 228);
 }
 
 @media screen and (max-width: 768px) {
