@@ -48,11 +48,15 @@ const [translateX, setTranslateX] = useState(0); // Track position
     const isRightSwipe = distance < -minSwipeDistance;
 
     if (isLeftSwipe) {
-      handleLeftClick();
+     
       setTranslateX(-window.innerWidth); // Animate off-screen left
+      handleLeftClick();
+      setTranslateX(0);
     } else if (isRightSwipe) {
-      handleRightClick();
+     
       setTranslateX(window.innerWidth); // Animate off-screen right
+      handleRightClick();
+      setTranslateX(0);
     } else {
       setTranslateX(0); // Reset if no swipe detected
     }

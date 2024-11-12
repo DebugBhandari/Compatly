@@ -52,7 +52,7 @@ const Dashboard = ()=> {
     
     
     
-  },[swipeToggle ]);
+  },[ ]);
 
   return (
     <div className="dashboard">
