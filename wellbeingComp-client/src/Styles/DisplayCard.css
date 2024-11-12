@@ -95,4 +95,7 @@ h3 {
   .navDropDownContent {
     left: -120px;
   }
+  .dashboard {
+    height: 70dvh;
+  }
 }
