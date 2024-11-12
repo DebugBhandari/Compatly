@@ -135,7 +135,7 @@ const data = [
     }}>
       <div className="cardHeader">
         {randomCard.fullname?<div className={!activeUser.isCompany?"cardAvatarComp":"cardAvatarUser"}><h1>{randomCard.fullname}</h1>
-        <h3>{randomCard.email}</h3></div>:<h2>WellbeingCompatibility</h2>}
+        <h3>{randomCard.email}</h3></div>:<h1>Compatly</h1>}
       </div>
       <div className="cardLine"></div>
       <div className="cardBody">
@@ -171,7 +171,7 @@ const data = [
           <Tooltip />
           <Legend />
           <Bar dataKey="Self" fill={activeUser.isCompany?"rgb(226, 108, 108)":"#8884d8"} activeBar={<Rectangle fill="pink" stroke="blue" />} />
-          <Bar dataKey="Candidate" fill={!activeUser.isCompany?"rgb(226, 108, 108)":"#8884d8"} activeBar={<Rectangle fill="gold" stroke="red" />} />
+          <Bar dataKey="Candidate" fill={!activeUser.isCompany?"rgb(226, 108, 108)":"#8884d8"} activeBar={<Rectangle fill="gold" stroke="purple" />} />
         </BarChart>
       </ResponsiveContainer> : null}
       </div>
