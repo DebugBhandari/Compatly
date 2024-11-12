@@ -27,9 +27,9 @@ const Register = () => {
 
     return (
         <div className="login_component">
+           
+            <form className="register_comp_form">
             <h2>Register</h2>
-            <form className="login_comp_form">
-               
                 <div className="radioDiv">
                 <label>Candidate
                 <input type="radio" id="candidate" name="isCompany"  onChange={()=> setIsCompany(0)} /></label>

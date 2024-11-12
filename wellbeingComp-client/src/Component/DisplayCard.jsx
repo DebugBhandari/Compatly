@@ -27,7 +27,7 @@ const compatibility_percentage = randomCard.compatibility_percentage;
 const [touchStart, setTouchStart] = useState(null);
 const [touchEnd, setTouchEnd] = useState(null);
 const [translateX, setTranslateX] = useState(0); // Track position
-  const minSwipeDistance = 100;
+  const minSwipeDistance = 200;
 
   const onTouchStart = (e) => {
     setTouchEnd(null); 
@@ -134,21 +134,22 @@ const data = [
         transition: touchEnd ? "transform 0.3s ease" : "none", // Smooth transition
     }}>
       <div className="cardHeader">
-        {randomCard.fullname?<div className="cardAvatar"><h1>{randomCard.fullname}</h1>
+        {randomCard.fullname?<div className={!activeUser.isCompany?"cardAvatarComp":"cardAvatarUser"}><h1>{randomCard.fullname}</h1>
         <h3>{randomCard.email}</h3></div>:<h2>WellbeingCompatibility</h2>}
       </div>
       <div className="cardLine"></div>
       <div className="cardBody">
         {randomCard.id ? (
-          <div className="cardItem">
-            <h2>{compatibility_percentage}% Match</h2></div>
+          <div className="cardItem"> 
+          {randomCard.compatibility_percentage?<h2>{compatibility_percentage}% Match</h2>: <h2>Loading...</h2>}
+          </div>
         ) : (
             activeUser.id?
           <div className="cardItem">
-            <h2 style={{margin:0}}>No swipes left.</h2>
+            {!randomCard.id?<h2 style={{margin:0}}>No swipes left.</h2>: <h2>Loading...</h2>}
           </div>:
             <div className="cardItem">
-            <h2 style={{margin:0}}>Please login to find your match.</h2>
+            <h3 style={{margin:0}}>Please login and fill your metrices to find your match.</h3>
             </div>
         )}
          {randomCard.id ? 
@@ -169,8 +170,8 @@ const data = [
           <YAxis domain={[0, 5]}/>
           <Tooltip />
           <Legend />
-          <Bar dataKey="Self" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-          <Bar dataKey="Candidate" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="red" />} />
+          <Bar dataKey="Self" fill={activeUser.isCompany?"rgb(226, 108, 108)":"#8884d8"} activeBar={<Rectangle fill="pink" stroke="blue" />} />
+          <Bar dataKey="Candidate" fill={!activeUser.isCompany?"rgb(226, 108, 108)":"#8884d8"} activeBar={<Rectangle fill="gold" stroke="red" />} />
         </BarChart>
       </ResponsiveContainer> : null}
       </div>

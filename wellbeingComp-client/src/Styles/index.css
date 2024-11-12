@@ -7,3 +7,9 @@
   color: black;
   min-height: 90dvh;
 }
+
+@media screen and (max-width: 768px) {
+  .dashboard {
+    min-height: 80dvh;
+  }
+}

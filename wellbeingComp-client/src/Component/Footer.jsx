@@ -6,8 +6,9 @@ export default function Footer() {
       <div className="footTitle">
         <div className="footTitleDiv">
           {" "}
-         <h6>Match your well-being to your prospects.</h6>
-          <h6>Coz theres no Gym for Mental Health.</h6>
+          <h6>Swipe the cards and find</h6>
+         <h6>your perfect well-being match.</h6>
+          
         </div>
         <div className="footTitleDiv">
           <div className="footRightSideDiv">
