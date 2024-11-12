@@ -26,26 +26,39 @@ const compatibility_percentage = randomCard.compatibility_percentage;
 //Implementing swipe functionality
 const [touchStart, setTouchStart] = useState(null);
 const [touchEnd, setTouchEnd] = useState(null);
+const [translateX, setTranslateX] = useState(0); // Track position
+  const minSwipeDistance = 100;
 
-const minSwipeDistance = 100;
+  const onTouchStart = (e) => {
+    setTouchEnd(null); 
+    setTouchStart(e.targetTouches[0].clientX); 
+    setTranslateX(0); // Reset position on start
+  };
 
-const onTouchStart = (e) => {
-  setTouchEnd(null);
-  setTouchStart(e.targetTouches[0].clientX);
-}
+  const onTouchMove = (e) => {
+    const currentTouch = e.targetTouches[0].clientX;
+    setTouchEnd(currentTouch); 
+    setTranslateX(currentTouch - touchStart); // Update translateX
+  };
 
-const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
 
-const onTouchEnd = () => {
-  if (!touchStart || !touchEnd) return
-  const distance = touchStart - touchEnd;
-  const isLeftSwipe = distance > minSwipeDistance;
-  const isRightSwipe = distance < -minSwipeDistance;
-  if (isLeftSwipe) handleLeftClick();
-    if (isRightSwipe) handleRightClick();
-  
-}
-
+    if (isLeftSwipe) {
+      handleLeftClick();
+      setTranslateX(-window.innerWidth); // Animate off-screen left
+    } else if (isRightSwipe) {
+      handleRightClick();
+      setTranslateX(window.innerWidth); // Animate off-screen right
+    } else {
+      setTranslateX(0); // Reset if no swipe detected
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   const handleLeftClick = async () => {
     try {
@@ -112,7 +125,10 @@ const data = [
     }
   ];
   return (
-    <div className="displaycard" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+    <div className="displaycard" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} style={{
+        transform: `translateX(${translateX}px)`, // Move the card based on translateX
+        transition: touchEnd ? "transform 0.3s ease" : "none", // Smooth transition
+    }}>
       <div className="cardHeader">
         {randomCard.fullname?<div className="cardAvatar"><h1>{randomCard.fullname}</h1>
         <h3>{randomCard.email}</h3></div>:<h2>WellbeingCompatibility</h2>}
