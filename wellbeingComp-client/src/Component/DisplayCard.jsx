@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { axiosInstance } from "../Services/config";
 import PropTypes from "prop-types";
 import "../Styles/DisplayCard.css";
@@ -23,6 +23,29 @@ const DisplayCard = ({
 //   const setRandomCard = useZuStore((state) => state.setRandomCard);
 const compatibility_percentage = randomCard.compatibility_percentage;
  
+//Implementing swipe functionality
+const [touchStart, setTouchStart] = useState(null);
+const [touchEnd, setTouchEnd] = useState(null);
+
+const minSwipeDistance = 100;
+
+const onTouchStart = (e) => {
+  setTouchEnd(null);
+  setTouchStart(e.targetTouches[0].clientX);
+}
+
+const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+const onTouchEnd = () => {
+  if (!touchStart || !touchEnd) return
+  const distance = touchStart - touchEnd;
+  const isLeftSwipe = distance > minSwipeDistance;
+  const isRightSwipe = distance < -minSwipeDistance;
+  if (isLeftSwipe) handleLeftClick();
+    if (isRightSwipe) handleRightClick();
+  
+}
+
 
   const handleLeftClick = async () => {
     try {
@@ -89,7 +112,7 @@ const data = [
     }
   ];
   return (
-    <div className="displaycard">
+    <div className="displaycard" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
       <div className="cardHeader">
         {randomCard.fullname?<div className="cardAvatar"><h1>{randomCard.fullname}</h1>
         <h3>{randomCard.email}</h3></div>:<h2>WellbeingCompatibility</h2>}
