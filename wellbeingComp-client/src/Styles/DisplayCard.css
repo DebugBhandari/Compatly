@@ -96,7 +96,7 @@ h3 {
 
 @media screen and (max-width: 768px) {
   .displaycard {
-    width: 80%;
+    width: 90%;
   }
   .navDropDownContent {
     left: -120px;
