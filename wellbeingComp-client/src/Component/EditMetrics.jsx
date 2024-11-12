@@ -5,6 +5,7 @@ import { axiosInstance } from "../Services/config";
 import useZuStore from "../zuStore";
 
 const EditMetrics = () => {
+    const isCompany = useZuStore((state) => state.activeUser.isCompany) == 1 ? 1 : 0;
 const activeUserMetrics = useZuStore((state) => state.activeUserMetrics);
   const [mentalHealthDays, setMentalHealthDays] = useState(activeUserMetrics.mentalHealthDays);
   const [therapyAccess, setTherapyAccess] = useState(activeUserMetrics.therapyAccess);
@@ -97,7 +98,7 @@ const handleWellnessStipend = (e) => {
 
   return (
     <div className="metrics_component">
-      <h2>Edit your Metrices</h2>
+      <h2 className={isCompany?"redHeader":"blueHeader"}>Edit your Metrices</h2>
  
       <form onSubmit={handleSubmit} className="metrics_comp_form">
       <div className="metricsDiv">

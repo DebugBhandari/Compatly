@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+
   flex-direction: column;
-  padding: 0;
   background-color: #f5f5f5;
   width: 100%;
   min-height: 600px;
   box-shadow: inset 0px -11px 8px -10px rgba(0, 0, 0, 0.1);
   color: black;
+  margin-top: 10px;
 }
 .metrics_comp_form {
   margin-bottom: 100px;
@@ -21,7 +21,6 @@
   align-items: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .metrics_input {
@@ -45,6 +44,12 @@
   color: black;
   border-radius: 8px;
 }
+.redHeader {
+  color: rgb(226, 108, 108);
+}
+.blueHeader {
+  color: rgb(123, 123, 217);
+}
 
 .mentalWBDiv {
   background-color: red;
@@ -65,12 +70,12 @@
 @media screen and (max-width: 768px) {
   .metricsDiv {
     flex-direction: column;
-    width: 100%;
+    width: 100dvw;
   }
   .metrics_input {
     margin: 10px;
   }
   .metricsSubDiv {
-    width: 100%;
+    width: 90%;
   }
 }
