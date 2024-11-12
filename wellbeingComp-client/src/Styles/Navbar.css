@@ -171,7 +171,6 @@
   height: 100px;
   background-color: white;
   width: 100dvw;
-  position: fixed;
   left: 0;
   bottom: 0;
   display: flex;
@@ -180,7 +179,7 @@
   flex-direction: row;
 }
 .footTitle {
-  width: 1400px;
+  width: 100%;
   flex-direction: row;
   padding: 0px 10px;
   display: flex;
@@ -192,9 +191,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 300px;
   color: black;
   padding: 0;
+}
+.footRightSideText {
+  font-size: 12px;
 }
 .footRightSideText a {
   color: black;

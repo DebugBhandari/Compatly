@@ -100,9 +100,13 @@ const data = [
           <div className="cardItem">
             <h2>{compatibility_percentage}% Match</h2></div>
         ) : (
+            activeUser.id?
           <div className="cardItem">
-            <h1 style={{margin:0}}>No swipes left.</h1>
-          </div>
+            <h2 style={{margin:0}}>No swipes left.</h2>
+          </div>:
+            <div className="cardItem">
+            <h2 style={{margin:0}}>Please login to find your match.</h2>
+            </div>
         )}
          {randomCard.id ? 
         <ResponsiveContainer width="90%" height="70%">
