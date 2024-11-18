@@ -1,7 +1,7 @@
 import pkg from "express";
 const { req, res, next } = pkg;
 import MetricsService from "../services/MetricsService.js";
-import calculateEuclidianDistance from "./compatibilityCalculator.js";
+import calculateCompatibility from "./compatibilityCalculator.js";
 
 //Create Metrics
 export const createMetrics = async (req, res, next) => {
@@ -135,10 +135,7 @@ export const getRandomMetrics = async (req, res, next) => {
     const metric = await MetricsService.getRandomMetrics(user_id, isCompany);
     //also get user metrics to calculate compatibility percentage
     const userMetric = await MetricsService.getCurrentUserMetrics(user_id);
-    const compatibility_percentage = calculateEuclidianDistance(
-      userMetric,
-      metric
-    );
+    const compatibility_percentage = calculateCompatibility(userMetric, metric);
     res.json({ ...metric, compatibility_percentage });
   } catch (error) {
     if (error.name === "ValidationError") {

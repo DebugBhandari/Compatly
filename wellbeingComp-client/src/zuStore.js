@@ -6,7 +6,7 @@ const useZuStore = create(
     (set) => ({
       activeUser: {},
       setActiveUser: (user) => set(() => ({ activeUser: user })),
-      logOut: () => set(() => ({ activeUser: {} })),
+      logOut: () => set(() => ({ activeUser: {}, activeUserMetrics: {} })),
       activeUserMetrics: {},
       setActiveUserMetrics: (metrics) =>
         set(() => ({ activeUserMetrics: metrics })),

@@ -139,19 +139,20 @@ const data = [
       </div>
       <div className="cardLine"></div>
       <div className="cardBody">
-        {randomCard.id ? (
+      {randomCard.id ? (
           <div className="cardItem"> 
           {randomCard.compatibility_percentage?<h2>{compatibility_percentage}% Match</h2>: <h2>Loading...</h2>}
           </div>
         ) : (
             activeUser.id?
           <div className="cardItem">
-            {!randomCard.id?<h2 style={{margin:0}}>No swipes left.</h2>: <h2>Loading...</h2>}
+            {!randomCard.id?<h2 style={{margin:0}}>No swipes left. Check your Profile.</h2>: <h2>Loading...</h2>}
           </div>:
             <div className="cardItem">
             <h3 style={{margin:0}}>Please login and fill your metrices to find your match.</h3>
             </div>
         )}
+       
          {randomCard.id ? 
         <ResponsiveContainer width="90%" height="70%">
         <BarChart
